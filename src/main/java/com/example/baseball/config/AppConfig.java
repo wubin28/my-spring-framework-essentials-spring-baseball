@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 
 import javax.sql.DataSource;
+import java.text.NumberFormat;
 import java.util.List;
 
 @Configuration
@@ -20,10 +21,16 @@ public class AppConfig {
     @Autowired
     private DataSource dataSource;
 
+    @Bean
+    public NumberFormat numberFormat() {
+        return NumberFormat.getCurrencyInstance();
+    }
+
     @Bean @Scope("prototype")
     public Game game() {
         BaseballGame baseballGame = new BaseballGame(teams.get(0), teams.get(1));
         baseballGame.setDataSource(dataSource);
         return baseballGame;
     }
+
 }
