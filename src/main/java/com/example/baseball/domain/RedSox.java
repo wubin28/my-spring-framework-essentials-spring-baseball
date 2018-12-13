@@ -1,8 +1,6 @@
 package com.example.baseball.domain;
 
-import org.springframework.stereotype.Component;
-
-@Component
+//@Component
 public class RedSox implements Team {
     @Override
     public String getName() {
