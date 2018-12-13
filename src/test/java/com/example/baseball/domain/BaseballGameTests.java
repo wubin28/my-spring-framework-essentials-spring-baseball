@@ -9,8 +9,9 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = AppConfig.class)
@@ -47,6 +48,6 @@ public class BaseballGameTests {
 		Game game2 = context.getBean("game", Game.class);
 		game2.setAwayTeam(context.getBean("royals", Team.class));
 
-		assertEquals(game2, game1);
+		assertThat(game2.toString(), not(equalTo(game1.toString())));
 	}
 }
