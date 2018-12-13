@@ -5,6 +5,10 @@
 
     <bean id="numberFormat" class="java.text.NumberFormat" factory-method="getCurrencyInstance"/>
 
+    <bean id="factory" class="javax.xml.parsers.DocumentBuilderFactory" factory-method="newInstance"/>
+
+    <bean class="javax.xml.parsers.DocumentBuilder" factory-bean="factory" factory-method="newDocumentBuilder"/>
+
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"/>
 
 </beans>
