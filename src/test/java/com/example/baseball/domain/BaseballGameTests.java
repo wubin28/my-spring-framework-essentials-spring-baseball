@@ -39,4 +39,14 @@ public class BaseballGameTests {
 		assertEquals("Kansas City Royals", royals.getName());
 	}
 
+	@Test
+	public void by_default_all_spring_managed_beans_are_singletons() {
+
+		Game game1 = context.getBean("game", Game.class);
+
+		Game game2 = context.getBean("game", Game.class);
+		game2.setAwayTeam(context.getBean("royals", Team.class));
+
+		assertEquals(game2, game1);
+	}
 }

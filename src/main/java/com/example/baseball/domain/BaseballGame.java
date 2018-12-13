@@ -37,4 +37,9 @@ public class BaseballGame implements Game{
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
+
+	@Override
+	public String toString() {
+		return String.format("Game between %s at %s", awayTeam.getName(), homeTeam.getName());
+	}
 }
