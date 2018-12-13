@@ -1,9 +1,12 @@
 package com.example.baseball.domain;
 
+import javax.sql.DataSource;
+
 public class BaseballGame implements Game{
 
 	private Team homeTeam;
 	private Team awayTeam;
+	private DataSource dataSource;
 
 	public BaseballGame(Team homeTeam, Team awayTeam) {
 		this.homeTeam = homeTeam;
@@ -24,5 +27,9 @@ public class BaseballGame implements Game{
 	public String playGame() {
 		return Math.random() < 0.5 ? getHomeTeam().getName() :
 				getAwayTeam().getName();
+	}
+
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
 	}
 }
