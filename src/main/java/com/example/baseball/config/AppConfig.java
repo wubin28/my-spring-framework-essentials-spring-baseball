@@ -26,7 +26,7 @@ public class AppConfig {
         return NumberFormat.getCurrencyInstance();
     }
 
-    @Bean(initMethod = "startGame", destroyMethod = "endGame")
+    @Bean
     @Scope("prototype")
     public Game game() {
         BaseballGame baseballGame = new BaseballGame(teams.get(0), teams.get(1));

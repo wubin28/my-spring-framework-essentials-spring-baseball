@@ -1,5 +1,7 @@
 package com.example.baseball.domain;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.sql.DataSource;
 
 public class BaseballGame implements Game{
@@ -13,10 +15,12 @@ public class BaseballGame implements Game{
 		this.awayTeam = awayTeam;
 	}
 
+	@PostConstruct
 	public void startGame() {
 		System.out.println("Playing National Athem");
 	}
 
+	@PreDestroy
 	public void endGame() {
 		System.out.println("Sending highlight to MLB");
 	}
