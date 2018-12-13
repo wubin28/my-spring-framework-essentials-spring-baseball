@@ -6,4 +6,6 @@ public interface Game {
     Team getAwayTeam();
 
     String playGame();
+
+    void setAwayTeam(Team royals);
 }

@@ -29,6 +29,11 @@ public class BaseballGame implements Game{
 				getAwayTeam().getName();
 	}
 
+	@Override
+	public void setAwayTeam(Team royals) {
+		this.awayTeam = royals;
+	}
+
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
