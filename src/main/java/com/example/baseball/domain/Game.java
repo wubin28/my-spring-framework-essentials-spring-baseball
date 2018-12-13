@@ -8,4 +8,5 @@ public interface Game {
     String playGame();
 
     void setAwayTeam(Team royals);
+
 }

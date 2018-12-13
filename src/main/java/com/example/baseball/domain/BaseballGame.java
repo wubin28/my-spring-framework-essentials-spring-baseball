@@ -13,6 +13,14 @@ public class BaseballGame implements Game{
 		this.awayTeam = awayTeam;
 	}
 
+	public void startGame() {
+		System.out.println("Playing National Athem");
+	}
+
+	public void endGame() {
+		System.out.println("Sending highlight to MLB");
+	}
+
 	@Override
 	public Team getHomeTeam() {
 		return this.homeTeam;
