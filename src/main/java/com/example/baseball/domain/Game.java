@@ -7,6 +7,7 @@ public interface Game {
 
     String playGame();
 
-    void setAwayTeam(Team royals);
+    void setAwayTeam(Team awayTeam);
 
+    void setHomeTeam(Team homeTeam);
 }

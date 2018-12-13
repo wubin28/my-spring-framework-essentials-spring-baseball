@@ -42,8 +42,13 @@ public class BaseballGame implements Game{
 	}
 
 	@Override
-	public void setAwayTeam(Team royals) {
-		this.awayTeam = royals;
+	public void setAwayTeam(Team awayTeam) {
+		this.awayTeam = awayTeam;
+	}
+
+	@Override
+	public void setHomeTeam(Team homeTeam) {
+		this.homeTeam = homeTeam;
 	}
 
 	public void setDataSource(DataSource dataSource) {

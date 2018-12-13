@@ -13,6 +13,7 @@ import java.util.List;
 @Configuration
 @ComponentScan(basePackages = "com.example.baseball")
 @ImportResource("classpath:/applicationContext.xml")
+@EnableAspectJAutoProxy
 public class AppConfig {
 
     @Autowired
