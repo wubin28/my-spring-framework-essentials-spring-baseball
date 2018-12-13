@@ -1,23 +1,13 @@
 package com.example.baseball.domain;
 
-import javax.sql.DataSource;
-
 public class BaseballGame implements Game{
 
 	private Team homeTeam;
 	private Team awayTeam;
-	private DataSource dataSource;
 
-	public void setAwayTeam(Team awayTeam) {
-		this.awayTeam = awayTeam;
-	}
-
-	public void setHomeTeam(Team homeTeam) {
+	public BaseballGame(Team homeTeam, Team awayTeam) {
 		this.homeTeam = homeTeam;
-	}
-
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
+		this.awayTeam = awayTeam;
 	}
 
 	@Override
