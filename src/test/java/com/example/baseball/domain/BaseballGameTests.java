@@ -9,7 +9,8 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -47,6 +48,6 @@ public class BaseballGameTests {
         Game game2 = context.getBean("game", Game.class);
         game2.setAwayTeam(context.getBean("royals", Team.class));
 
-        assertThat(game2.toString(), is(game1.toString()));
+        assertThat(game2.toString(), not(equalTo(game1.toString())));
     }
 }
