@@ -9,8 +9,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.hamcrest.Matchers.not;
-import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -18,36 +17,36 @@ import static org.junit.Assert.*;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 public class BaseballGameTests {
 
-	@Autowired
-	private Game game;
+    @Autowired
+    private Game game;
 
-	@Autowired
-	private ApplicationContext context;
+    @Autowired
+    private ApplicationContext context;
 
-	@Test
-	public void should_have_a_winning_team() {
-		String home = game.getHomeTeam().getName();
-		String away = game.getAwayTeam().getName();
+    @Test
+    public void should_have_a_winning_team() {
+        String home = game.getHomeTeam().getName();
+        String away = game.getAwayTeam().getName();
 
-		String result = game.playGame();
+        String result = game.playGame();
 
-		assertTrue(result.contains(home) || result.contains(away));
-	}
+        assertTrue(result.contains(home) || result.contains(away));
+    }
 
-	@Test
-	public void should_get_a_bean_from_application_context() {
-		Team royals = context.getBean("royals", Team.class);
-		assertEquals("Kansas City Royals", royals.getName());
-	}
+    @Test
+    public void should_get_a_bean_from_application_context() {
+        Team royals = context.getBean("royals", Team.class);
+        assertEquals("Kansas City Royals", royals.getName());
+    }
 
-	@Test
-	public void by_default_all_spring_managed_beans_are_singletons() {
+    @Test
+    public void by_default_all_spring_managed_beans_are_singletons() {
 
-		Game game1 = context.getBean("game", Game.class);
+        Game game1 = context.getBean("game", Game.class);
 
-		Game game2 = context.getBean("game", Game.class);
-		game2.setAwayTeam(context.getBean("royals", Team.class));
+        Game game2 = context.getBean("game", Game.class);
+        game2.setAwayTeam(context.getBean("royals", Team.class));
 
-		assertThat(game2.toString(), not(equalTo(game1.toString())));
-	}
+        assertThat(game2.toString(), is(game1.toString()));
+    }
 }
