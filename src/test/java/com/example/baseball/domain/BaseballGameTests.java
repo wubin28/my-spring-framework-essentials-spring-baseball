@@ -1,27 +1,27 @@
 package com.example.baseball.domain;
 
 import com.example.baseball.config.AppConfig;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = AppConfig.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 public class BaseballGameTests {
 
-    @Autowired
     private Game game;
 
-    @Autowired
     private ApplicationContext context;
+
+    @Before
+    public void setUp() throws Exception {
+        context = new AnnotationConfigApplicationContext(AppConfig.class);
+        game = context.getBean("game", Game.class);
+    }
 
     @Test
     public void should_have_a_winning_team() {
